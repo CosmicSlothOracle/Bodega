@@ -20,7 +20,7 @@ Beyond the public facade, BloomOS powers the internal operations of Bodega Bühl
 This project leverages mostly the capabilities of CLaude_Opus 4.7 thinkning. 
 Strong project rules, modular development and pemanently updating documentation and ensuring features are robust and functional made this project thrive.
 
-*   **Accelerated Debugging**: During the development, complex issues like the recent Supabase connectivity problems were quickly diagnosed. My ability to analyze logs, trace dependencies, and understand the project's configuration (environment variables, client/server setups) allowed for rapid identification of root causes (e.g., an unresolvable Supabase URL) that would typically consume significant human developer time.
+*   **Accelerated Debugging**: During the development, complex issueswere quickly diagnosed. AI´s ability to analyze logs, trace dependencies, and understand the project's configuration (environment variables, client/server setups) allowed for rapid identification of root causes (e.g., an unresolvable Supabase URL) that would typically consume significant human developer time.
 
 
 
