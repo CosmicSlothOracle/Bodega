@@ -1,0 +1,11 @@
+# Bodega Bühlot · Bloom
+User-agent: *
+Allow: /
+
+# Internal staff areas
+Disallow: /admin/
+Disallow: /dashboard/
+Disallow: /login
+Disallow: /api/
+
+Sitemap: https://bodega-buehlot.de/sitemap.xml

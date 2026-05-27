@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lager-Etiketten · Getränkekarte Bodega (A4)</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 8mm;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    body {
+      margin: 0;
+      padding: 6mm;
+      background: #fff;
+      color: #111;
+      font-size: 6.5pt;
+      line-height: 1.05;
+    }
+
+    .hdr {
+      font-size: 8pt;
+      font-weight: 700;
+      margin-bottom: 3mm;
+      padding-bottom: 1mm;
+      border-bottom: 1px solid #333;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 8mm;
+    }
+
+    .hdr small {
+      font-weight: 400;
+      font-size: 6pt;
+      color: #444;
+      max-width: 55%;
+      text-align: right;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 1.5mm 2mm;
+    }
+
+    .tag {
+      border: 0.35pt dashed #333;
+      padding: 1mm 1.5mm;
+      min-height: 8mm;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      hyphens: auto;
+      word-break: break-word;
+      overflow: hidden;
+    }
+
+    .foot {
+      margin-top: 3mm;
+      font-size: 5.5pt;
+      color: #333;
+      border-top: 0.5pt solid #ccc;
+      padding-top: 2mm;
+    }
+
+    @media print {
+      body {
+        padding: 0;
+      }
+
+      .no-print {
+        display: none;
+      }
+    }
+
+    .hint-screen {
+      margin-bottom: 4mm;
+      padding: 3mm;
+      background: #f4f4f4;
+      border-radius: 4px;
+      font-size: 9pt;
+    }
+  </style>
+</head>
+<body>
+  <div class="hint-screen no-print">
+    <strong>Druck:</strong> Diese Datei im Browser öffnen → Drucken → Papier A4, Ränder „Minimal“, Skalierung 100&nbsp;%.
+    Alle Felder haben einen gestrichelten Rahmen zum Ausschneiden.
+  </div>
+
+  <header class="hdr">
+    <span>Bodega Bühlot · Lager / Bar-Etiketten (Getränkekarte)</span>
+    <small>Zutaten aus Karte + Wein Kurznamen · Stand drinks.ts / Arbeitskopie · „Pourer“ = typischer Ausgießer (ersetzt umgangssprachlich oft „Pinter“).</small>
+  </header>
+
+  <main class="grid" id="labels"></main>
+
+  <footer class="foot">
+    <strong>Hinweise:</strong>
+    Hausgemachte Limos/Sirupe ggf. zusätzlich Zucker / Zitrus lagern.
+    Frische Garnitur: Limette · Zitrone · Orange · Minze · Rohrzucker separat.
+  </footer>
+
+  <script>
+    const LABELS = [
+      // ─── Hochprozentiges / Basis-Bar ───
+      "Absolut Vodka",
+      "Brandy Cardenal Mendoza",
+      "Cachaça",
+      "Campari",
+      "Dry Gin Gordon's",
+      "Havana Club Añejo 3",
+      "Licor 43",
+      "Ramazzotti",
+      "Sandeman Sherry",
+      "St. Germain",
+      "Túnel Hierbas dulces",
+      "Túnel Hierbas secas",
+
+      // ─── Sirupe / süße Komponenten ───
+      "Holundersirup",
+      "Ingwersirup",
+      "Limettensirup",
+      "Limoncello",
+      "Rohrzuckersirup",
+      "Zitronensaft",
+      "Zitronensirup",
+
+      // ─── Mix / alkoholfrei ───
+      "Aperol",
+      "Bitter Lemon (Schweppes)",
+      "Cola",
+      "Cola Zero",
+      "Crodino",
+      "Fanta",
+      "Fruchtsaft Apfel naturtrüb",
+      "Fruchtsaft Johannisbeere",
+      "Fruchtsaft Orange",
+      "Fruchtsaft Rhabarber",
+      "Ginger Ale (Schweppes)",
+      "Holunderblüten-Limo (Haus)",
+      "Ingwer-Limo (Haus)",
+      "Mineralwasser Classic",
+      "Mineralwasser Medium",
+      "Mineralwasser Naturell",
+      "Orangensaft",
+      "Paulaner Limo | Cola",
+      "Prosecco",
+      "Schweppes Tonic Water",
+      "Sekt",
+      "Soda / Mineral Sprudel",
+      "süßer Sprudel",
+      "Teinacher Limo Johannisbeer-Holunder",
+      "Teinacher Limo Mango-Maracuja-O.",
+      "Teinacher Limo Orange-Mandarine",
+      "Teinacher Limo Zitrone",
+
+      // ─── Warm / Kaffee ───
+      "Espresso / Kaffeebohnen",
+      "Kondensmilch",
+      "Milch",
+      "Milchschaum",
+      "Tee (Sortiment)",
+
+      // ─── Wein Glas / Schank ───
+      "Cava Rexach Baqués Brut",
+      "Rosé Affentaler Monkey Mountain",
+      "Rosé Ramirez Viura Garnacha",
+      "Rosé Santa Cruz Syrah",
+      "Weiß Affentaler Monkey Mountain",
+      "Weiß Ramirez Chardonnay Malvasia Viura",
+      "Weiß Rivaner feinherb",
+      "Weiß Rioja Nivarius Flasche",
+      "Weiß Santa Cruz Verdejo",
+      "Rot Arínzano Tinto Glas",
+      "Rot Covila Rioja Crianza Glas",
+      "Rot Monkey Mountain Glas",
+      "Rot Santa Cruz Garnacha Glas",
+
+      // ─── Wein Flaschen Rot ───
+      "Rot LEZA Garcia Reserva Fl.",
+      "Rot OSTATU Escobal bio Fl.",
+      "Rot OSTATU Gloria Fl.",
+      "Rot PAGO DE INA Selección Fl.",
+      "Rot PAGO DE INA Vendimia Fl.",
+      "Rot RAÍZ DE GUZMÁN Fl.",
+      "Rot Rioja Morca Godina Fl.",
+
+      // ─── Sangria / Sommer ───
+      "Rotwein (Sangria / Mix)",
+      "Sangria Obst / Frucht",
+
+      // ─── Bier ───
+      "Chiemseer Hell vom Fass",
+      "Fürstenberg Pils vom Fass",
+      "Fürstenberg alkoholfrei Fl.",
+      "Hoepfner Kräusen Fl.",
+      "Paulaner Hefe alkoholfrei Fl.",
+      "Paulaner Hefe vom Fass",
+      "Radler süß | sauer",
+      "San Miguel Fl.",
+
+      // ─── Garnitur frisch ───
+      "Limette",
+      "Minze frisch",
+      "Orange",
+      "Rohrzucker Stück",
+      "Zitrone",
+
+      // ─── Sonstiges Schank ───
+      "Tinto de Verano (Mix)",
+      "Weinschorle rot",
+      "Weinschorle rot süß",
+      "Weinschorle süß",
+      "Weinschorle weiß sauer",
+
+      // ─── Generisch Bar / Reinigung ───
+      "Ausgießer / Pourer",
+      "Barlöffel / Bar Spoon",
+      "Barsieb / Strainer",
+      "Besen",
+      "Cocktail-Shaker",
+      "Eisschaufel",
+      "Eiszange",
+      "Geschirrspültabs",
+      "Handfeger",
+      "Handschuhe Einweg",
+      "Jigger / Messbecher",
+      "Küchenrolle",
+      "Mikrofasertuch",
+      "Putzmittel Bar",
+      "Spülbürste",
+    ].sort((a, b) => a.localeCompare(b, "de"));
+
+    const grid = document.getElementById("labels");
+    for (const text of LABELS) {
+      const el = document.createElement("div");
+      el.className = "tag";
+      el.textContent = text;
+      grid.appendChild(el);
+    }
+  </script>
+</body>
+</html>

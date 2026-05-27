@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <title>V3: Bold Graphic / Stencil</title>
+  <style>
+    /* STYLE 3: Bold Graphic / Stencil (Gemäß Referenzbild 3) */
+    :root {
+      --bg: #ffffff;
+      --text: #000000;
+    }
+    body {
+      margin: 0; padding: 2rem;
+      font-family: 'Arial Black', Impact, sans-serif; text-transform: uppercase;
+      background: var(--bg); color: var(--text);
+    }
+    .sheet {
+      max-width: 900px; margin: 0 auto;
+      border: 8px solid var(--text);
+      padding: 2rem;
+    }
+    header {
+      display: flex; justify-content: space-between; align-items: flex-end;
+      border-bottom: 8px solid var(--text); padding-bottom: 1rem; margin-bottom: 3rem;
+    }
+    h1 { margin: 0; font-size: 3.5rem; letter-spacing: -0.05em; line-height: 0.9; }
+    .price { font-size: 2.5rem; }
+    
+    .grid { display: grid; gap: 4rem; }
+    .kit { display: flex; gap: 2rem; flex-wrap: wrap; }
+    .item { display: flex; flex-direction: column; align-items: center; width: 100px; font-size: 0.9rem; }
+    
+    .icon { width: 80px; height: 80px; margin-bottom: 0.5rem; }
+    /* SVG Styling for V3 (High contrast stencil) */
+    .icon path, .icon rect, .icon circle { fill: var(--text); }
+    .icon .negative { fill: var(--bg); }
+    
+    .flow { display: flex; align-items: center; gap: 1rem; }
+    .step { flex: 1; text-align: center; border: 4px solid var(--text); padding: 1rem; position: relative; }
+    .step strong { display: block; font-size: 1.2rem; margin-top: 1rem; }
+    .step em { display: block; font-family: sans-serif; font-weight: bold; font-size: 0.8rem; letter-spacing: 0.1em; margin-top: 0.5rem; }
+    .arrow { width: 32px; height: 32px; background: var(--text); clip-path: polygon(0 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0 80%); }
+  </style>
+</head>
+<body>
+  <div class="sheet">
+    <header>
+      <h1>Bodega<br>Spritz</h1>
+      <div class="price">6,90</div>
+    </header>
+
+    <div class="grid">
+      <section>
+        <h2 style="font-size: 1.5rem; margin-top:0;">Zutaten</h2>
+        <div class="kit">
+          <!-- Weinglas V3 Stencil -->
+          <div class="item">
+            <svg class="icon" viewBox="0 0 64 64">
+              <path d="M4 4 h56 l-12 30 c-3 8 -29 8 -32 0 z" />
+              <path d="M12 10 h40 c-2 4 -5 12 -5 12 h-30 z" class="negative" />
+              <path d="M28 38 v18 h-12 v8 h32 v-8 h-12 v-18 z" />
+            </svg>
+            <span>Glas</span>
+          </div>
+          <!-- Eis V3 Stencil -->
+          <div class="item">
+            <svg class="icon" viewBox="0 0 64 64">
+              <rect x="8" y="12" width="28" height="28" rx="4" />
+              <rect x="28" y="24" width="28" height="28" rx="4" />
+              <rect x="14" y="18" width="16" height="16" rx="2" class="negative" />
+              <rect x="34" y="30" width="16" height="16" rx="2" class="negative" />
+            </svg>
+            <span>Eis</span>
+          </div>
+          <!-- Zitrone V3 Stencil -->
+          <div class="item">
+            <svg class="icon" viewBox="0 0 64 64">
+              <circle cx="32" cy="32" r="28" />
+              <circle cx="32" cy="32" r="22" class="negative" />
+              <path d="M32 10 v44 M10 32 h44 M16 16 l32 32 M16 48 l32 -32" stroke="#000" stroke-width="4" />
+              <circle cx="32" cy="32" r="6" />
+            </svg>
+            <span>Zitrone</span>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2 style="font-size: 1.5rem;">Zubereitung</h2>
+        <div class="flow">
+          <div class="step">
+            <svg class="icon" viewBox="0 0 64 64">
+              <path d="M4 4 h56 l-12 30 c-3 8 -29 8 -32 0 z" class="negative" stroke="#000" stroke-width="4"/>
+              <path d="M28 38 v18 h-12 v8 h32 v-8 h-12 v-18 z" />
+            </svg>
+            <strong>Glas</strong><em>kühlen</em>
+          </div>
+          <div class="arrow"></div>
+          <div class="step">
+            <svg class="icon" viewBox="0 0 64 64">
+              <rect x="16" y="16" width="32" height="32" rx="4" />
+              <rect x="24" y="24" width="16" height="16" class="negative" />
+            </svg>
+            <strong>2–3 Eis</strong><em></em>
+          </div>
+          <div class="arrow"></div>
+          <div class="step">
+            <svg class="icon" viewBox="0 0 64 64">
+              <path d="M4 4 h56 l-12 30 c-3 8 -29 8 -32 0 z" />
+              <path d="M12 10 h40 c-2 4 -5 12 -5 12 h-30 z" class="negative" />
+              <path d="M28 38 v18 h-12 v8 h32 v-8 h-12 v-18 z" />
+            </svg>
+            <strong>4cl Ingwer</strong><em>+ 3cl Zitrone</em>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+# Hobby-friendly: Vercel only allows cron schedules that run at most once per day.
+# Hourly expiry is triggered here instead. Add GitHub Actions secrets after connecting the repo:
+#   CRON_EXPIRE_URL  — full GET URL of the cron route, e.g. https://<your-production-domain>/api/cron/expire-swaps
+#   CRON_SECRET      — exact same value as CRON_SECRET in Vercel (Authorization: Bearer …)
+#
+# This file must stay at .github/workflows/ relative to the GitHub repo root (if the app lives in a
+# subfolder, either move these workflows to the repo root or set the project Root Directory in Vercel).
+
+name: Cron — expire shift swaps
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Hourly UTC (offset minute avoids aligning with peak times)
+    - cron: "7 * * * *"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: expire-swaps-cron
+  cancel-in-progress: false
+
+jobs:
+  expire-swaps:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping expire-swaps
+        env:
+          CRON_EXPIRE_URL: ${{ secrets.CRON_EXPIRE_URL }}
+          CRON_SECRET: ${{ secrets.CRON_SECRET }}
+        run: |
+          if [ -z "$CRON_EXPIRE_URL" ] || [ -z "$CRON_SECRET" ]; then
+            echo "::warning::Skipping: set repository secrets CRON_EXPIRE_URL and CRON_SECRET to enable hourly swap expiry via GitHub."
+            exit 0
+          fi
+          curl -f -sS -X GET "$CRON_EXPIRE_URL" \
+            -H "Authorization: Bearer ${CRON_SECRET}" \
+            -H "Accept: application/json"

@@ -1,0 +1,42 @@
+# Local Supabase configuration.
+# Apply with `supabase start` (Docker required) and `supabase db push`.
+
+project_id = "bodega-bloom"
+
+[api]
+enabled = true
+port = 54321
+schemas = ["public", "storage", "graphql_public"]
+
+[db]
+port = 54322
+shadow_port = 54320
+major_version = 17
+
+[studio]
+enabled = true
+port = 54323
+
+[storage]
+enabled = true
+file_size_limit = "50MiB"
+
+[auth]
+enabled = true
+site_url = "http://localhost:3000"
+additional_redirect_urls = ["https://bodega-buehlot.de"]
+jwt_expiry = 3600
+enable_signup = false      # Staff/owner accounts are invite-only
+enable_anonymous_sign_ins = false
+
+[auth.email]
+enable_signup = false
+double_confirm_changes = true
+enable_confirmations = true
+
+# OTP / Magic link only — no passwords.
+[auth.email.template.magic_link]
+subject = "Dein Login-Link für Bloom OS"
+
+[edge_runtime]
+enabled = true

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <title>V5: Poppy Colorful Splashy</title>
+  <style>
+    /* STYLE 5: Poppy Colorful Splashy */
+    @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@700;900&display=swap');
+
+    :root {
+      --bg: #1a1a1a;
+      --text: #ffffff;
+      --pop-pink: #ff006e;
+      --pop-yellow: #ffbe0b;
+      --pop-blue: #3a86ff;
+      --pop-green: #8338ec;
+    }
+    body {
+      margin: 0; padding: 2rem;
+      font-family: 'Nunito', sans-serif;
+      background: var(--bg); color: var(--text);
+      overflow-x: hidden;
+    }
+    
+    /* Background Blobs */
+    .bg-blob { position: fixed; border-radius: 50%; filter: blur(80px); z-index: -1; opacity: 0.5; }
+    .blob1 { width: 400px; height: 400px; background: var(--pop-pink); top: -100px; left: -100px; }
+    .blob2 { width: 500px; height: 500px; background: var(--pop-blue); bottom: -100px; right: -100px; }
+    .blob3 { width: 300px; height: 300px; background: var(--pop-yellow); top: 40%; left: 40%; }
+
+    .sheet {
+      max-width: 900px; margin: 0 auto;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border: 2px solid rgba(255,255,255,0.1);
+      border-radius: 32px;
+      padding: 3rem;
+      position: relative;
+    }
+    header {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 3rem;
+    }
+    h1 { margin: 0; font-family: 'Fredoka One', cursive; font-size: 4rem; color: var(--pop-yellow); text-shadow: 4px 4px 0px var(--pop-pink); letter-spacing: 2px; }
+    .price { font-family: 'Fredoka One', cursive; font-size: 2rem; background: var(--pop-blue); padding: 0.5rem 1.5rem; border-radius: 100px; box-shadow: 4px 4px 0px var(--pop-green); transform: rotate(5deg); }
+    h2 { font-size: 1.5rem; font-weight: 900; letter-spacing: 0.1em; text-transform: uppercase; background: var(--pop-pink); display: inline-block; padding: 0.2rem 1rem; border-radius: 8px; transform: rotate(-2deg); margin-bottom: 2rem; }
+    
+    .kit { display: flex; gap: 2rem; flex-wrap: wrap; }
+    .item { display: flex; flex-direction: column; align-items: center; width: 100px; text-align: center; font-size: 1rem; font-weight: 900; }
+    
+    .icon-wrapper { position: relative; width: 80px; height: 80px; margin-bottom: 1rem; }
+    .icon-wrapper::after { content:''; position:absolute; width: 100%; height: 100%; top: 6px; left: 6px; border-radius: 20px; z-index:-1; }
+    
+    /* Funky Offsets for icons */
+    .glass::after { background: var(--pop-blue); }
+    .ice::after { background: var(--pop-pink); }
+    .lemon::after { background: var(--pop-yellow); border-radius: 50%; }
+    .bottle::after { background: var(--pop-green); }
+
+    .icon { width: 100%; height: 100%; background: #fff; border-radius: 20px; border: 4px solid var(--bg); padding: 10px; box-sizing: border-box; }
+    .lemon .icon { border-radius: 50%; }
+
+    .icon path, .icon circle, .icon rect { fill: none; stroke: var(--bg); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; font-weight: 900; }
+    
+    .flow { display: flex; align-items: center; gap: 1.5rem; margin-top: 2rem; }
+    .step { flex: 1; text-align: center; background: rgba(255,255,255,0.1); padding: 1.5rem 1rem; border-radius: 24px; border: 2px dashed rgba(255,255,255,0.3); }
+    .step strong { display: block; font-size: 1.4rem; font-weight: 900; margin-top: 1rem; color: var(--pop-yellow); }
+    .step em { font-size: 1rem; color: #ddd; font-style: normal; font-weight: 700; }
+    .arrow { font-family: 'Fredoka One', cursive; font-size: 3rem; color: var(--pop-pink); text-shadow: 2px 2px 0px var(--pop-blue); }
+  </style>
+</head>
+<body>
+  <div class="bg-blob blob1"></div>
+  <div class="bg-blob blob2"></div>
+  <div class="bg-blob blob3"></div>
+
+  <div class="sheet">
+    <header>
+      <h1>Bodega Spritz</h1>
+      <div class="price">6,90 €</div>
+    </header>
+
+    <section>
+      <h2>Equipment & Zutaten</h2>
+      <div class="kit">
+        <div class="item glass">
+          <div class="icon-wrapper glass">
+            <svg class="icon" viewBox="0 0 64 64">
+              <path d="M12 12 c0 0 0 32 20 32 c20 0 20 -32 20 -32 z" />
+              <path d="M32 44 v16 M20 60 h24" />
+            </svg>
+          </div>
+          <span>Weinglas</span>
+        </div>
+        <div class="item ice">
+          <div class="icon-wrapper ice">
+            <svg class="icon" viewBox="0 0 64 64">
+              <rect x="12" y="16" width="24" height="24" rx="4" />
+              <rect x="28" y="28" width="24" height="24" rx="4" />
+            </svg>
+          </div>
+          <span>Eis</span>
+        </div>
+        <div class="item lemon">
+          <div class="icon-wrapper lemon">
+            <svg class="icon" viewBox="0 0 64 64">
+              <circle cx="32" cy="32" r="26" />
+              <circle cx="32" cy="32" r="18" />
+              <path d="M32 14 v36 M14 32 h36 M19 19 l26 26 M19 45 l26 -26" />
+            </svg>
+          </div>
+          <span>Zitrone</span>
+        </div>
+        <div class="item bottle">
+          <div class="icon-wrapper bottle">
+            <svg class="icon" viewBox="0 0 64 64">
+              <path d="M24 8 h16 v16 l8 32 h-32 l8 -32 z" />
+            </svg>
+          </div>
+          <span>Sekt</span>
+        </div>
+      </div>
+    </section>
+
+    <section style="margin-top: 4rem;">
+      <h2>Der Flow</h2>
+      <div class="flow">
+        <div class="step">
+          <div class="icon-wrapper glass" style="margin: 0 auto;">
+            <svg class="icon" viewBox="0 0 64 64">
+              <path d="M12 12 c0 0 0 32 20 32 c20 0 20 -32 20 -32 z" />
+              <path d="M32 44 v16 M20 60 h24" />
+            </svg>
+          </div>
+          <strong>Glas</strong><em>kühlen</em>
+        </div>
+        <div class="arrow">></div>
+        <div class="step">
+          <div class="icon-wrapper ice" style="margin: 0 auto;">
+            <svg class="icon" viewBox="0 0 64 64">
+              <rect x="20" y="20" width="24" height="24" rx="4" />
+            </svg>
+          </div>
+          <strong>2–3 Eis</strong>
+        </div>
+        <div class="arrow">></div>
+        <div class="step">
+          <div class="icon-wrapper lemon" style="margin: 0 auto;">
+            <svg class="icon" viewBox="0 0 64 64">
+              <circle cx="32" cy="32" r="26" fill="var(--pop-yellow)" stroke="none" />
+              <path d="M12 12 c0 0 0 32 20 32 c20 0 20 -32 20 -32 z" />
+            </svg>
+          </div>
+          <strong>4cl Ingwer</strong><em>+ 3cl Zitrone</em>
+        </div>
+        <div class="arrow">></div>
+        <div class="step">
+          <div class="icon-wrapper bottle" style="margin: 0 auto;">
+            <svg class="icon" viewBox="0 0 64 64">
+              <path d="M24 8 h16 v16 l8 32 h-32 l8 -32 z" />
+            </svg>
+          </div>
+          <strong>Sekt</strong><em>auffüllen</em>
+        </div>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

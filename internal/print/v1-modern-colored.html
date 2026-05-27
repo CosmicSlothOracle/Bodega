@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <title>V1: Modern Colored Line-Art</title>
+  <style>
+    /* STYLE 1: Modern Colored Outline (Gemäß Referenzbild 1) */
+    :root {
+      --bg: #fdfbf7;
+      --text: #2d2a26;
+      --stroke: #111111;
+      --accent-red: #e76f51;
+      --accent-yellow: #f4a261;
+      --accent-ice: #a8d5e2;
+      --accent-green: #2a9d8f;
+      --card-bg: #ffffff;
+    }
+    body {
+      margin: 0; padding: 2rem;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg); color: var(--text);
+    }
+    .sheet {
+      max-width: 900px; margin: 0 auto;
+      background: var(--card-bg);
+      border: 3px solid var(--stroke);
+      border-radius: 24px;
+      padding: 2rem;
+      box-shadow: 8px 8px 0px rgba(0,0,0,0.1);
+    }
+    header {
+      display: flex; justify-content: space-between; align-items: center;
+      border-bottom: 3px solid var(--stroke); padding-bottom: 1rem; margin-bottom: 2rem;
+    }
+    h1 { margin: 0; font-size: 2.5rem; font-weight: 800; letter-spacing: -0.02em; }
+    .price { font-size: 1.5rem; font-weight: 700; background: var(--accent-yellow); padding: 0.5rem 1rem; border-radius: 12px; border: 2px solid var(--stroke); }
+    h2 { font-size: 1.1rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.5rem; }
+    
+    .grid { display: grid; gap: 2rem; }
+    .kit { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    .item { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; width: 80px; text-align: center; font-size: 0.8rem; font-weight: 600; }
+    
+    .icon { width: 64px; height: 64px; }
+    /* SVG Styling for V1 */
+    .icon path, .icon circle, .icon rect { stroke: var(--stroke); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+    
+    .flow { display: flex; align-items: center; gap: 1rem; margin-top: 1rem; padding: 1.5rem; background: #f4f1eb; border-radius: 16px; border: 2px dashed #ccc;}
+    .step { flex: 1; text-align: center; }
+    .step strong { display: block; font-size: 1rem; margin-top: 0.5rem; }
+    .step em { color: #666; font-size: 0.8rem; font-style: normal; }
+    .arrow { font-weight: bold; color: var(--accent-red); font-size: 1.5rem; }
+  </style>
+</head>
+<body>
+  <div class="sheet">
+    <header>
+      <h1>Bodega Spritz</h1>
+      <div class="price">6,90 €</div>
+    </header>
+
+    <section>
+      <h2>Equipment & Zutaten</h2>
+      <div class="kit">
+        <!-- Weinglas V1 -->
+        <div class="item">
+          <svg class="icon" viewBox="0 0 64 64">
+            <path d="M12 12 c0 0 0 32 20 32 c20 0 20 -32 20 -32 z" fill="#fde6d8" />
+            <path d="M14 24 h36 M32 44 v16 M20 60 h24" />
+          </svg>
+          <span>Weinglas</span>
+        </div>
+        <!-- Eis V1 -->
+        <div class="item">
+          <svg class="icon" viewBox="0 0 64 64">
+            <rect x="12" y="16" width="24" height="24" rx="4" fill="var(--accent-ice)" />
+            <rect x="28" y="28" width="24" height="24" rx="4" fill="#b9dffb" />
+            <path d="M18 22 l6 6 M34 34 l6 6" />
+          </svg>
+          <span>Eis</span>
+        </div>
+        <!-- Zitrone V1 -->
+        <div class="item">
+          <svg class="icon" viewBox="0 0 64 64">
+            <circle cx="32" cy="32" r="26" fill="var(--accent-yellow)" />
+            <circle cx="32" cy="32" r="18" fill="none" />
+            <path d="M32 14 v36 M14 32 h36 M19 19 l26 26 M19 45 l26 -26" />
+          </svg>
+          <span>Zitrone</span>
+        </div>
+        <!-- Sekt V1 -->
+        <div class="item">
+          <svg class="icon" viewBox="0 0 64 64">
+            <path d="M24 8 h16 v16 l8 32 h-32 l8 -32 z" fill="#e9c46a" />
+            <path d="M26 12 h12 M30 20 h4" />
+          </svg>
+          <span>Sekt</span>
+        </div>
+      </div>
+    </section>
+
+    <section style="margin-top: 3rem;">
+      <h2>Aufbau im Glas</h2>
+      <div class="flow">
+        <div class="step">
+          <svg class="icon" viewBox="0 0 64 64">
+            <path d="M12 12 c0 0 0 32 20 32 c20 0 20 -32 20 -32 z" fill="none" />
+            <path d="M32 44 v16 M20 60 h24" />
+          </svg>
+          <strong>Glas</strong><em>kühlen</em>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step">
+          <svg class="icon" viewBox="0 0 64 64">
+            <rect x="20" y="20" width="24" height="24" rx="4" fill="var(--accent-ice)" />
+          </svg>
+          <strong>2–3 Eis</strong>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step">
+          <svg class="icon" viewBox="0 0 64 64">
+            <path d="M12 12 c0 0 0 32 20 32 c20 0 20 -32 20 -32 z" fill="var(--accent-yellow)" />
+            <path d="M32 44 v16 M20 60 h24" />
+          </svg>
+          <strong>4cl Ingwer</strong><em>+ 3cl Zitrone</em>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step">
+          <svg class="icon" viewBox="0 0 64 64">
+            <path d="M24 8 h16 v16 l8 32 h-32 l8 -32 z" fill="#e9c46a" />
+          </svg>
+          <strong>Sekt</strong><em>auffüllen</em>
+        </div>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

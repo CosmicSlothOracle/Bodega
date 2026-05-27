@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <title>Empfehlungen - Bodega Bühlot</title>
+  <style>
+    /* Based on globals.css and PrintMenuPage */
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;600&display=swap');
+
+    :root {
+      --bloom-red: #6f1d1b;
+      --font-display: "Cormorant Garamond", serif;
+      --font-sans: "Inter", sans-serif;
+    }
+
+    @page {
+      size: A5;
+      margin: 15mm 12mm;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: #ffffff;
+      color: #000000;
+      font-family: var(--font-sans);
+      font-size: 8.5pt;
+      line-height: 1.4;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 100%;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 12mm;
+      padding-top: 5mm;
+    }
+
+    .logo {
+      width: 22mm;
+      height: 22mm;
+      margin: 0 auto 4mm;
+      display: block;
+    }
+
+    h1 {
+      font-family: var(--font-display);
+      font-size: 24pt;
+      margin: 0 0 1mm;
+      font-weight: 400;
+      color: #000000;
+    }
+
+    .tagline {
+      font-size: 7pt;
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      margin-bottom: 6mm;
+      color: #000000;
+    }
+
+    .page-title {
+      font-family: var(--font-display);
+      font-size: 16pt;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #000000;
+      margin: 0;
+    }
+
+    section {
+      margin-bottom: 10mm;
+      page-break-inside: avoid;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: 14pt;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      text-align: center;
+      color: var(--bloom-red);
+      border-bottom: 1px solid var(--bloom-red);
+      padding-bottom: 2mm;
+      margin-bottom: 4mm;
+    }
+
+    /* Lucide „Sprout“ wie DietarySymbol type=vegetarian (Karte) */
+    .section-title-inner {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5mm;
+      flex-wrap: wrap;
+    }
+
+    .diet-sprout {
+      width: 4.2mm;
+      height: 4.2mm;
+      flex-shrink: 0;
+      color: #22c55e;
+      stroke: currentColor;
+      fill: none;
+    }
+
+    .veg-label {
+      font-family: var(--font-sans);
+      font-size: 6.5pt;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #15803d;
+      opacity: 0.85;
+    }
+
+    .intro {
+      font-size: 8.5pt;
+      font-style: italic;
+      text-align: center;
+      color: #333;
+      margin-bottom: 5mm;
+      padding: 0 4mm;
+      line-height: 1.3;
+    }
+
+    .intro--lead {
+      font-style: normal;
+      font-size: 8pt;
+      letter-spacing: 0.02em;
+      margin-bottom: 7mm;
+      padding: 0 5mm;
+      border-bottom: 1px solid rgba(111, 29, 27, 0.25);
+      padding-bottom: 5mm;
+    }
+
+    .items-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 3mm;
+      margin-bottom: 5mm;
+    }
+
+    .item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .item-name {
+      font-family: var(--font-display);
+      font-size: 11pt;
+      font-weight: 600;
+      color: var(--bloom-red);
+    }
+
+    .item-price {
+      font-size: 9pt;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .pairing {
+      background-color: #f9f6f2;
+      padding: 3mm 4mm;
+      border-left: 2px solid var(--bloom-red);
+      margin-top: 2mm;
+    }
+
+    .pairing-label {
+      font-size: 7pt;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 600;
+      color: #666;
+      margin-bottom: 1mm;
+      display: block;
+    }
+
+    .pairing-content {
+      font-family: var(--font-display);
+      font-size: 11pt;
+      color: #000;
+    }
+
+    .pairing-details {
+      font-size: 7.5pt;
+      color: #555;
+      font-style: italic;
+    }
+
+    .footer-note {
+      font-size: 6.5pt;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      text-align: center;
+      opacity: 0.5;
+      margin-top: 8mm;
+      border-top: 0.5px solid #000;
+      padding-top: 3mm;
+    }
+
+    .page-break {
+      page-break-after: always;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <img src="../../public/assets/logo_rot.png" alt="Bodega Logo" class="logo" />
+      <h1>Bodega Bühlot</h1>
+      <p class="tagline">tapas y mas</p>
+      <h2 class="page-title">Nuestras Recomendaciones</h2>
+    </header>
+
+    <p class="intro intro--lead">
+      Für den kleinen Hunger: je ein bis zwei Tapas mit einem passenden Getränk — schnell, ehrlich, ideal zwischen Feierabend und dem großen Appetit.
+    </p>
+
+    <section>
+      <h2 class="section-title">La Parada Rápida · Der kurze Stopp</h2>
+      <p class="intro">
+        Klassische Bar-Kombination: fein gesalzener Serrano auf knusprigem Tomatenbrot. Dazu ein Glas erfrischenden Sommerweins — wie ein kurzer Urlaub an der Theke.
+      </p>
+      <div class="items-grid">
+        <div class="item">
+          <span class="item-name">Jamón Serrano</span>
+          <span class="item-price">7,90 €</span>
+        </div>
+        <div class="item">
+          <span class="item-name">Pan con Tomate</span>
+          <span class="item-price">5,50 €</span>
+        </div>
+      </div>
+      <div class="pairing">
+        <span class="pairing-label">Getränke-Partner</span>
+        <div class="pairing-content">Tinto de Verano <span class="item-price" style="float: right;">6,90 €</span></div>
+        <div class="pairing-details">0,25 l · Rotwein mit Spritz und Frucht</div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Verde y Oro · Grün und Gold</h2>
+      <p class="intro">
+        Mild scharfe Padrón-Paprika und wärmendes Kartoffelomelett: herzhaft, aber nicht schwer. Der Hugo setzt blumige Holunder- und Minznoten dazu.
+      </p>
+      <div class="items-grid">
+        <div class="item">
+          <span class="item-name">Pimientos de Padrón</span>
+          <span class="item-price">5,90 €</span>
+        </div>
+        <div class="item">
+          <span class="item-name">Tortilla</span>
+          <span class="item-price">6,50 €</span>
+        </div>
+      </div>
+      <div class="pairing">
+        <span class="pairing-label">Getränke-Partner</span>
+        <div class="pairing-content">Hugo <span class="item-price" style="float: right;">6,90 €</span></div>
+        <div class="pairing-details">Prosecco | Holunder | Soda | Minze | Limette</div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Brisa del Atlántico · Atlantische Brise</h2>
+      <p class="intro">
+        Zarte Mini-Tintenfische mit knuspriger Kruste und knuspriges Baguette mit Aioli — Meer, Knoblauch, Zitrone. Der Limoncello-Spritz verlängert die Sommernote.
+      </p>
+      <div class="items-grid">
+        <div class="item">
+          <span class="item-name">Chipirones</span>
+          <span class="item-price">7,90 €</span>
+        </div>
+        <div class="item">
+          <span class="item-name">Pan con Alioli</span>
+          <span class="item-price">4,50 €</span>
+        </div>
+      </div>
+      <div class="pairing">
+        <span class="pairing-label">Getränke-Partner</span>
+        <div class="pairing-content">Limoncello Spritz <span class="item-price" style="float: right;">6,90 €</span></div>
+        <div class="pairing-details">Limoncello | Prosecco | Soda | Zitrone</div>
+      </div>
+    </section>
+
+    <div class="page-break"></div>
+
+    <section>
+      <h2 class="section-title">Pasión Ibérica · Der Spanier</h2>
+      <p class="intro">
+        Dieses Gedeck ist eine Hommage an die tiefen, rustikalen Wurzeln Spaniens. Es kombiniert die feine Salzigkeit der Eichel-Schwein-Produkte mit wärmenden, herzhaften Elementen. Die stärkehaltigen Kartoffeln fangen die intensiven Saucen perfekt auf.
+      </p>
+      <div class="items-grid">
+        <div class="item">
+          <span class="item-name">Jamón Ibérico Bellota</span>
+          <span class="item-price">8,90 €</span>
+        </div>
+        <div class="item">
+          <span class="item-name">Pan con Tomate</span>
+          <span class="item-price">5,50 €</span>
+        </div>
+        <div class="item">
+          <span class="item-name">Albóndigas</span>
+          <span class="item-price">7,50 €</span>
+        </div>
+        <div class="item">
+          <span class="item-name">Patatas Bravas</span>
+          <span class="item-price">7,90 €</span>
+        </div>
+      </div>
+      <div class="pairing">
+        <span class="pairing-label">Getränke-Empfehlung</span>
+        <div class="pairing-content">D.O.Ca Rioja — COVILA Crianza <span class="item-price" style="float: right;">7,50 €</span></div>
+        <div class="pairing-details">Weich, geschmeidig, süffig (0,2 l) <span class="pairing-details" style="display: block; margin-top: 1mm;">Alternativ: Ein Glas klassische Sangria (5,90 €)</span></div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Brisas del Mar · Das Meer an der Küste</h2>
+      <p class="intro">
+        Ein leichtes, knoblauchbetontes Menü, das die Frische des Meeres einfängt. Die Kombination aus zartem Fisch, knackigem Gemüse und cremigen Dips spielt mit eleganten Kontrasten.
+      </p>
+      <div class="items-grid">
+        <div class="item">
+          <span class="item-name">Gambas al Ajillo</span>
+          <span class="item-price">7,90 €</span>
+        </div>
+        <div class="item">
+          <span class="item-name">Boquerones Fritos</span>
+          <span class="item-price">7,90 €</span>
+        </div>
+        <div class="item">
+          <span class="item-name">Pimientos de Padrón</span>
+          <span class="item-price">5,90 €</span>
+        </div>
+        <div class="item">
+          <span class="item-name">Pan con Alioli</span>
+          <span class="item-price">4,50 €</span>
+        </div>
+      </div>
+      <div class="pairing">
+        <span class="pairing-label">Getränke-Empfehlung</span>
+        <div class="pairing-content">D.O. Almansa — SANTA CRUZ Verdejo <span class="item-price" style="float: right;">6,90 €</span></div>
+        <div class="pairing-details">Pampelmuse, grüne Früchte, spritzige Säure (0,2 l) <span class="pairing-details" style="display: block; margin-top: 1mm;">Aperitif: Bodega Sommerschorle (6,90 €)</span></div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">
+        <span class="section-title-inner">
+          Jardín Andaluz · Nachhaltige Entdeckung
+          <svg class="diet-sprout" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M7 20h10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M10 20c5.5-2.5.8-6.4 3-10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          <span class="veg-label">vegetarisch</span>
+        </span>
+      </h2>
+      <p class="intro">
+        Dieses Gedeck beweist, dass fleischloser Genuss auf spanische Art tiefgründig und facettenreich ist. Es balanciert gekonnt zwischen süß, herzhaft, cremig und salzig.
+      </p>
+      <div class="items-grid">
+        <div class="item">
+          <span class="item-name">Croquetas de Espinaca</span>
+          <span class="item-price">6,50 €</span>
+        </div>
+        <div class="item">
+          <span class="item-name">Verduras Mediterráneas</span>
+          <span class="item-price">6,90 €</span>
+        </div>
+        <div class="item">
+          <span class="item-name">Papas Arrugadas</span>
+          <span class="item-price">6,90 €</span>
+        </div>
+        <div class="item">
+          <span class="item-name">Queso de Cabra con Miel</span>
+          <span class="item-price">7,90 €</span>
+        </div>
+      </div>
+      <div class="pairing">
+        <span class="pairing-label">Getränke-Empfehlung</span>
+        <div class="pairing-content">Ramirez de la Piscina Rosado <span class="item-price" style="float: right;">7,90 €</span></div>
+        <div class="pairing-details">Frische rote Beeren, Kräuter, süffig-trocken (0,2 l)</div>
+      </div>
+    </section>
+
+    <div class="page-break"></div>
+
+    <section>
+      <h2 class="section-title">Tierra y Fuego · Die opulente Reise</h2>
+      <p class="intro">
+        Für Gäste, die kräftige Aromen, dunkle Saucen und komplexe Geschmacksprofile suchen. Dieses Gedeck ist intensiv, dekadent und perfekt für die späteren Abendstunden.
+      </p>
+      <div class="items-grid">
+        <div class="item">
+          <span class="item-name">Queso Manchego</span>
+          <span class="item-price">7,50 €</span>
+        </div>
+        <div class="item">
+          <span class="item-name">Dátiles en Manto de Bacon</span>
+          <span class="item-price">5,90 €</span>
+        </div>
+        <div class="item">
+          <span class="item-name">Chorizo al Jerez</span>
+          <span class="item-price">7,90 €</span>
+        </div>
+        <div class="item">
+          <span class="item-name">Carne en Salsa</span>
+          <span class="item-price">7,90 €</span>
+        </div>
+      </div>
+      <div class="pairing">
+        <span class="pairing-label">Getränke-Empfehlung</span>
+        <div class="pairing-content">RAÍZ DE GUZMÁN Crianza 2021 <span class="item-price" style="float: right;">39,00 €</span></div>
+        <div class="pairing-details">100 % Tempranillo, fleischig elegant (Flasche 0,75 l)</div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">El Toque Fresco · Spritziger Sommer</h2>
+      <p class="intro">
+        Dieses Gedeck ist perfekt für den Einstieg in den Abend. Die botanischen Noten des Gins und der Holunderblüte im Drink verlangen nach leichten, salzigen und aromatischen Begleitern, die den Gaumen kitzeln, ohne ihn zu überfordern.
+      </p>
+      <div class="items-grid">
+        <div class="item">
+          <span class="item-name">Aceitunas Aliñadas</span>
+          <span class="item-price">3,90 €</span>
+        </div>
+        <div class="item">
+          <span class="item-name">Almendras Fritas</span>
+          <span class="item-price">5,50 €</span>
+        </div>
+        <div class="item">
+          <span class="item-name">Gambas en Nido de Patata</span>
+          <span class="item-price">8,90 €</span>
+        </div>
+      </div>
+      <div class="pairing">
+        <span class="pairing-label">Getränke-Partner</span>
+        <div class="pairing-content">Bodega Fizz <span class="item-price" style="float: right;">8,50 €</span></div>
+        <div class="pairing-details">Gin | St. Germain | Zitronensaft | Soda | Rohrzuckersirup</div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Chispa de Oro · Gold ist die Sonne</h2>
+      <p class="intro">
+        Der Ingwer im Drink sorgt für eine subtile Schärfe und Frische. Dieses Gedeck setzt auf Tapas, die eine natürliche Süße oder eine feine Säure besitzen, um die spritzige Ingwer-Note des Sekt-Aperitifs zu spiegeln.
+      </p>
+      <div class="items-grid">
+        <div class="item">
+          <span class="item-name">Dátiles en Manto de Bacon</span>
+          <span class="item-price">5,90 €</span>
+        </div>
+        <div class="item">
+          <span class="item-name">Alcachofas al Ajillo</span>
+          <span class="item-price">6,50 €</span>
+        </div>
+        <div class="item">
+          <span class="item-name">Croquetas de Sobrasada</span>
+          <span class="item-price">6,50 €</span>
+        </div>
+      </div>
+      <div class="pairing">
+        <span class="pairing-label">Getränke-Partner</span>
+        <div class="pairing-content">Bodega Spritz <span class="item-price" style="float: right;">6,90 €</span></div>
+        <div class="pairing-details">Ingwersirup | Sekt | Zitrone</div>
+      </div>
+    </section>
+
+    <div class="page-break"></div>
+
+    <section>
+      <h2 class="section-title">Corazón de la Meseta · Das Herz der Hochebene</h2>
+      <p class="intro">
+        Bier vom Fass verlangt nach ehrlichen, kräftigen und knusprigen Tapas. Die Hopfenbittere reinigt den Gaumen nach jedem Bissen von den reichhaltigen Ölen und Saucen dieser Auswahl.
+      </p>
+      <div class="items-grid">
+        <div class="item">
+          <span class="item-name">Chorizo Ibérico Bellota</span>
+          <span class="item-price">8,90 €</span>
+        </div>
+        <div class="item">
+          <span class="item-name">Rabas de Calamar</span>
+          <span class="item-price">7,90 €</span>
+        </div>
+        <div class="item">
+          <span class="item-name">Champiñones al Ajillo</span>
+          <span class="item-price">6,90 €</span>
+        </div>
+        <div class="item">
+          <span class="item-name">Pinchos Morunos de Pollo</span>
+          <span class="item-price">7,50 €</span>
+        </div>
+      </div>
+      <div class="pairing">
+        <span class="pairing-label">Getränke-Partner</span>
+        <div class="pairing-content">Fürstenberg Pils <span class="pairing-details">oder</span> Chiemseer Hell</div>
+        <div class="pairing-details">Frisch gezapft vom Fass <span class="item-price" style="float: right;">0,3l 3,80 € | 0,5l 4,90 €</span></div>
+      </div>
+    </section>
+
+    <div class="footer-note">
+      Bodega Bühlot · Tapas y Mas · Genussmomente teilen
+    </div>
+  </div>
+</body>
+</html>
