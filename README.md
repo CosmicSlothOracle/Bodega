@@ -1,5 +1,4 @@
-## Technology Stack (Key Highlights)
-
+- Key Technology Stack -
 *   **Frontend**: Next.js (16), React (19), TypeScript, Tailwind CSS v4, Framer Motion
 *   **Backend/Database**: Supabase (for authentication, database, and Edge Functions)
 *   **Integrations**: DISH (reservations), Resend (email), Twilio (SMS), Telegram Bot, PostHog (analytics)
@@ -17,10 +16,9 @@ Beyond the public facade, BloomOS powers the internal operations of Bodega Bühl
 
 ## AI-Driven Development: A Collaborative Approach
 
-This project leverages mostly the capabilities of CLaude_Opus 4.7 thinkning. 
+This project leverages mostly the capabilities of Anthropic´s "Claude_Opus 4.7 - thinking" by discussing development, defining subgoals and structural integration of the different modules. This will be written into a "plan.md" for each segmented coding effort. The actual implementation is then performed by cursor´s "composer 2.5 - fast" to optimise token-usage.
 Strong project rules, modular development and pemanently updating documentation and ensuring features are robust and functional made this project thrive.
 
-*   **Accelerated Debugging**: During the development, complex issueswere quickly diagnosed. AI´s ability to analyze logs, trace dependencies, and understand the project's configuration (environment variables, client/server setups) allowed for rapid identification of root causes (e.g., an unresolvable Supabase URL) that would typically consume significant human developer time.
 
 
 
