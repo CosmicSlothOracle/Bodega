@@ -6,6 +6,14 @@
 
 export const heroSlides = [
   {
+    src: "/assets/Gemini_Generated_Image_luxfwqluxfwqluxf.png",
+    alt: "Terrasse der Bodega Bühlot bei goldenem Abendlicht – Gäste, Tapas und warme Stimmung.",
+  },
+  {
+    src: "/assets/ChatGPT Image 31. Mai 2026, 14_43_22.png",
+    alt: "Außenterrasse der Bodega bei Sonnenuntergang – leere Tische und mediterrane Atmosphäre.",
+  },
+  {
     src: "/gallery/img_4985-ts1587294575.webp",
     alt: "Tapas, Wein und Kerzenlicht auf rustikalem Holz.",
   },
